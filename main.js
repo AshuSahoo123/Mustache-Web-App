@@ -1,3 +1,10 @@
+noseX = 0;
+noseY = 0;
+
+function preload() {
+    mustache = loadImage("m.png");
+}
+
 function setup() {
     canvas = createCanvas(300, 300);
     canvas.center();
@@ -17,6 +24,8 @@ function gotPoses(results) {
         console.log(results);
         console.log("NoseX = ", results[0].pose.nose.x);
         console.log("NoseY = ", results[0].pose.nose.y);
+        noseX = results[0].pose.nose.x - 40;
+        noseY = results[0].pose.nose.y - 20;
     }
 }
 
@@ -27,5 +36,5 @@ function take_snapshot() {
 
 function draw() {
     image(video, 0, 0, 300, 300);
-
+    image(mustache, noseX, noseY, 75, 75);
 }
